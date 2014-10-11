@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <meta content='<%= user_signed_in? ? current_user.id : "" %>' name='user-id'/>
+
+    <title>Chatty</title>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= stylesheet_link_tag 'bootstrap-social' %>
+    <%= stylesheet_link_tag 'chat' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
+
+    <!-- shiv here -->
+
+</head>
+
+<body>
+
+<%= render 'layouts/nav' %>
+<div class="wrap">
+    <div class="container">
+        <% if notice %>
+            <p class="alert alert-success"><%= notice %></p>
+        <% end %>
+        <% if alert %>
+            <p class="alert alert-danger"><%= alert %></p>
+        <% end %>
+        <%= yield %>
+    </div>
+</div>
+<%= render 'layouts/footer' %>
+<audio id="chatAudio">
+    <source src="/sounds/notification.mp3" type="audio/mpeg">
+</audio>
+</body>
+
+</html>
